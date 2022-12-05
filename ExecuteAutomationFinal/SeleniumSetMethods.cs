@@ -11,9 +11,9 @@ namespace ExecuteAutomationFinal
     class SeleniumSetMethods
     {
 
-        public static void EnterText(string element, string value, PropertyType elementType) //use PropertyType to like with enum integrator
+        public static void EnterText(string element, string value, PropertyType elementType) 
         {
-           if (elementType == PropertyType.Id)  //use PropertyType.type
+           if (elementType == PropertyType.Id) 
                 PropertiesCollection.driver.FindElement(By.Id(element)).SendKeys(value); 
 
            if (elementType == PropertyType.Name)

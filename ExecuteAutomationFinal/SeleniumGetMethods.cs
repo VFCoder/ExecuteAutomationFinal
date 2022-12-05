@@ -10,9 +10,9 @@ namespace ExecuteAutomationFinal
 {
     class SeleniumGetMethods
     {
-        public static string GetText(string element, PropertyType elementType) //use strong typed parameter propertytype
+        public static string GetText(string element, PropertyType elementType) 
         {
-            if (elementType == PropertyType.Id)  //use PropertyType
+            if (elementType == PropertyType.Id)  
                 return PropertiesCollection.driver.FindElement(By.Id(element)).GetAttribute("value");
             if (elementType == PropertyType.Name)
                 return PropertiesCollection.driver.FindElement(By.Name(element)).GetAttribute("value");

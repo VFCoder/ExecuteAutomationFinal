@@ -31,23 +31,25 @@ namespace ExecuteAutomationFinal
         [Test]
         public void ExecuteTest()
         {
-            //title
-            SeleniumSetMethods.SelectDropDown("TitleId", "Ms.", PropertyType.Id); //use Strongly Typed Parameters in case values change, easy to fix
+            EAPageObjects page = new EAPageObjects();       //create instance of page objects class with new methods
 
-            Console.WriteLine("Title value is: " + SeleniumGetMethods.GetTextFromDropDown("TitleId", PropertyType.Id)); 
+            page.txtInitial.SendKeys("UserInputText");
 
+            page.btnSave.Click();
 
-            //initial
-            SeleniumSetMethods.EnterText("Initial", "UserText.", PropertyType.Name);
-
-            Console.WriteLine("Initial value is: " + SeleniumGetMethods.GetText("Initial", PropertyType.Name)); 
+            
 
 
-            //click
-            SeleniumSetMethods.Click("Save", PropertyType.Name);
-
-            Console.WriteLine("Executed Test");
-
+            /*            //title
+                        SeleniumSetMethods.SelectDropDown("TitleId", "Ms.", PropertyType.Id); 
+                        Console.WriteLine("Title value is: " + SeleniumGetMethods.GetTextFromDropDown("TitleId", PropertyType.Id)); 
+                        //initial
+                        SeleniumSetMethods.EnterText("Initial", "UserText.", PropertyType.Name);
+                        Console.WriteLine("Initial value is: " + SeleniumGetMethods.GetText("Initial", PropertyType.Name)); 
+                        //click
+                        SeleniumSetMethods.Click("Save", PropertyType.Name);
+                        Console.WriteLine("Executed Test");
+            */
 
         }
         [TearDown]

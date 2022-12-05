@@ -11,7 +11,7 @@ namespace ExecuteAutomationFinal
     {
         public static IWebDriver driver { get; set; } 
     }
-    enum PropertyType  //strongly typed properties integrator
+    enum PropertyType  
     {
         Id,
         Name,
