@@ -30,15 +30,15 @@ namespace ExecuteAutomationFinal
         public void ExecuteTest()
         {
             //title
-            SeleniumSetMethods.SelectDropDown(driver, "TitleId", "Mr.", "Id");
+            SeleniumSetMethods.SelectDropDown(driver, "TitleId", "Ms.", "Id");
 
-            Console.WriteLine("Title value is: " + SeleniumGetMethods.GetText(driver,"TitleId","Id")); //this gets all possible values but we only want the one selected
+            Console.WriteLine("Title value is: " + SeleniumGetMethods.GetTextFromDropDown(driver,"TitleId","Id")); //change to drop down method
 
 
             //initial
             SeleniumSetMethods.EnterText(driver, "Initial", "UserText.", "Name");
 
-            Console.WriteLine("Initial value is: " + SeleniumGetMethods.GetText(driver, "Initial", "Name")); //this returns nothing
+            Console.WriteLine("Initial value is: " + SeleniumGetMethods.GetText(driver, "Initial", "Name")); 
 
 
             //click
