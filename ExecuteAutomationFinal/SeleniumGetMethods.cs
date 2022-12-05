@@ -10,20 +10,20 @@ namespace ExecuteAutomationFinal
 {
     class SeleniumGetMethods
     {
-        public static string GetText(IWebDriver driver, string element, string elementType)
+        public static string GetText(string element, string elementType) //remove IWebDriver drivers from methods, replace with PropertiesCollection.driver in code
         {
             if (elementType == "Id")
-                return driver.FindElement(By.Id(element)).GetAttribute("value");
+                return PropertiesCollection.driver.FindElement(By.Id(element)).GetAttribute("value");
             if (elementType == "Name")
-                return driver.FindElement(By.Name(element)).GetAttribute("value");
+                return PropertiesCollection.driver.FindElement(By.Name(element)).GetAttribute("value");
             else return string.Empty;
         }
-        public static string GetTextFromDropDown(IWebDriver driver, string element, string elementType) //create new method for drop down
+        public static string GetTextFromDropDown(string element, string elementType) 
         {
             if (elementType == "Id")
-                return new SelectElement(driver.FindElement(By.Id(element))).AllSelectedOptions.SingleOrDefault().Text; //this returns selection
+                return new SelectElement(PropertiesCollection.driver.FindElement(By.Id(element))).AllSelectedOptions.SingleOrDefault().Text;
             if (elementType == "Name")
-                return new SelectElement(driver.FindElement(By.Name(element))).AllSelectedOptions.SingleOrDefault().Text;
+                return new SelectElement(PropertiesCollection.driver.FindElement(By.Name(element))).AllSelectedOptions.SingleOrDefault().Text;
             else return string.Empty;
         }
 
