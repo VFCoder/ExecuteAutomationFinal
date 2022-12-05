@@ -7,7 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExecuteAutomationFinal //custom methods to set values (text box, drop down menu, check box)
+namespace ExecuteAutomationFinal 
+    
+    //custom methods to set (input) values (text box, drop down menu, check box)
+    //custom methods to get values (read values previously input)
 {
     class Program
     {
@@ -29,8 +32,14 @@ namespace ExecuteAutomationFinal //custom methods to set values (text box, drop 
             //title
             SeleniumSetMethods.SelectDropDown(driver, "TitleId", "Mr.", "Id");
 
+            Console.WriteLine("Title value is: " + SeleniumGetMethods.GetText(driver,"TitleId","Id")); //this gets all possible values but we only want the one selected
+
+
             //initial
             SeleniumSetMethods.EnterText(driver, "Initial", "UserText.", "Name");
+
+            Console.WriteLine("Initial value is: " + SeleniumGetMethods.GetText(driver, "Initial", "Name")); //this returns nothing
+
 
             //click
             SeleniumSetMethods.Click(driver, "Save", "Name");
