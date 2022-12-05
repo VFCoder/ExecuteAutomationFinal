@@ -15,7 +15,6 @@ namespace ExecuteAutomationFinal
 {
     class Program
     {
-        //IWebDriver driver = new ChromeDriver(); remove this, now using PropertiesCollections.drive
 
         static void Main(string[] args)
         {
@@ -23,10 +22,9 @@ namespace ExecuteAutomationFinal
         [SetUp]
         public void Initialize()
         {
-            //initialize new instance of driver here:
             PropertiesCollection.driver = new ChromeDriver();
 
-            PropertiesCollection.driver.Navigate().GoToUrl("https://demosite.executeautomation.com/index.html"); //replace "driver"
+            PropertiesCollection.driver.Navigate().GoToUrl("https://demosite.executeautomation.com/index.html");
 
             Console.WriteLine("Opened URL");
         }
@@ -34,19 +32,19 @@ namespace ExecuteAutomationFinal
         public void ExecuteTest()
         {
             //title
-            SeleniumSetMethods.SelectDropDown("TitleId", "Ms.", "Id"); //remove drivers
+            SeleniumSetMethods.SelectDropDown("TitleId", "Ms.", PropertyType.Id); //use Strongly Typed Parameters in case values change, easy to fix
 
-            Console.WriteLine("Title value is: " + SeleniumGetMethods.GetTextFromDropDown("TitleId","Id")); 
+            Console.WriteLine("Title value is: " + SeleniumGetMethods.GetTextFromDropDown("TitleId", PropertyType.Id)); 
 
 
             //initial
-            SeleniumSetMethods.EnterText("Initial", "UserText.", "Name");
+            SeleniumSetMethods.EnterText("Initial", "UserText.", PropertyType.Name);
 
-            Console.WriteLine("Initial value is: " + SeleniumGetMethods.GetText("Initial", "Name")); 
+            Console.WriteLine("Initial value is: " + SeleniumGetMethods.GetText("Initial", PropertyType.Name)); 
 
 
             //click
-            SeleniumSetMethods.Click("Save", "Name");
+            SeleniumSetMethods.Click("Save", PropertyType.Name);
 
             Console.WriteLine("Executed Test");
 
@@ -55,7 +53,7 @@ namespace ExecuteAutomationFinal
         [TearDown]
         public void CleanUp()
         {
-            PropertiesCollection.driver.Close(); //replace driver
+            PropertiesCollection.driver.Close(); 
 
             Console.WriteLine("Closed browser");
         }

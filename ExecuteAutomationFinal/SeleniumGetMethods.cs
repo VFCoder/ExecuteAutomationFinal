@@ -10,19 +10,19 @@ namespace ExecuteAutomationFinal
 {
     class SeleniumGetMethods
     {
-        public static string GetText(string element, string elementType) //remove IWebDriver drivers from methods, replace with PropertiesCollection.driver in code
+        public static string GetText(string element, PropertyType elementType) //use strong typed parameter propertytype
         {
-            if (elementType == "Id")
+            if (elementType == PropertyType.Id)  //use PropertyType
                 return PropertiesCollection.driver.FindElement(By.Id(element)).GetAttribute("value");
-            if (elementType == "Name")
+            if (elementType == PropertyType.Name)
                 return PropertiesCollection.driver.FindElement(By.Name(element)).GetAttribute("value");
             else return string.Empty;
         }
-        public static string GetTextFromDropDown(string element, string elementType) 
+        public static string GetTextFromDropDown(string element, PropertyType elementType) 
         {
-            if (elementType == "Id")
+            if (elementType == PropertyType.Id)
                 return new SelectElement(PropertiesCollection.driver.FindElement(By.Id(element))).AllSelectedOptions.SingleOrDefault().Text;
-            if (elementType == "Name")
+            if (elementType == PropertyType.Name)
                 return new SelectElement(PropertiesCollection.driver.FindElement(By.Name(element))).AllSelectedOptions.SingleOrDefault().Text;
             else return string.Empty;
         }

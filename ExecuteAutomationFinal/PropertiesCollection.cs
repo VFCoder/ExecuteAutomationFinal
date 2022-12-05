@@ -9,7 +9,15 @@ namespace ExecuteAutomationFinal
 {
     class PropertiesCollection
     {
-        //auto-implemented property:
-        public static IWebDriver driver { get; set; } // now replace "drivers" with PropertiesCollection.driver
+        public static IWebDriver driver { get; set; } 
+    }
+    enum PropertyType  //strongly typed properties integrator
+    {
+        Id,
+        Name,
+        LinkText,
+        CssName,
+        ClassName,
+        XPath
     }
 }

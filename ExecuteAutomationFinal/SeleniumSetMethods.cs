@@ -10,34 +10,32 @@ namespace ExecuteAutomationFinal
 {
     class SeleniumSetMethods
     {
-        // (old method): public static void EnterText(IWebDriver driver, string element, string value, string elementType) 
-        // step 1: remove ÏWebDriver driver instances from all methods
-        // step 2: create new class for IWebDriver: "PropertiesCollection"
-        public static void EnterText(string element, string value, string elementType) //removed IWebDriver driver instances
-        {
-           if (elementType == "Id")
-                PropertiesCollection.driver.FindElement(By.Id(element)).SendKeys(value); // replace "driver"with PropertiesCollection.driver
 
-            if (elementType == "Name")
+        public static void EnterText(string element, string value, PropertyType elementType) //use PropertyType to like with enum integrator
+        {
+           if (elementType == PropertyType.Id)  //use PropertyType.type
+                PropertiesCollection.driver.FindElement(By.Id(element)).SendKeys(value); 
+
+           if (elementType == PropertyType.Name)
                 PropertiesCollection.driver.FindElement(By.Name(element)).SendKeys(value);
         }
 
-        public static void Click(string element, string elementType)
+        public static void Click(string element, PropertyType elementType)
         {
-            if (elementType == "Id")
+            if (elementType == PropertyType.Id)
                 PropertiesCollection.driver.FindElement(By.Id(element)).Click();
 
-            if (elementType == "Name")
+            if (elementType == PropertyType.Name)
                 PropertiesCollection.driver.FindElement(By.Name(element)).Click();
         }
 
-        public static void SelectDropDown(string element, string value, string elementType)
+        public static void SelectDropDown(string element, string value, PropertyType elementType)
         {
 
-            if (elementType == "Id")
+            if (elementType == PropertyType.Id)
                 new SelectElement(PropertiesCollection.driver.FindElement(By.Id(element))).SelectByText(value);
 
-            if (elementType == "Name")
+            if (elementType == PropertyType.Name)
                 new SelectElement(PropertiesCollection.driver.FindElement(By.Name(element))).SelectByText(value);
         }
     }
