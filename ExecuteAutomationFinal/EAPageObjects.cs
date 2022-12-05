@@ -23,7 +23,21 @@ namespace ExecuteAutomationFinal
         [FindsBy(How = How.Name, Using = "Initial")]
         public IWebElement txtInitial { get; set; }
 
+        [FindsBy(How = How.Name, Using = "FirstName")]
+        public IWebElement txtFirstName { get; set; }
+
+        [FindsBy(How = How.Name, Using = "MiddleName")]
+        public IWebElement txtMiddleName { get; set; }
+
         [FindsBy(How = How.Name, Using = "Save")]
         public IWebElement btnSave { get; set; }
+
+        public void FillUserForm(string initial, string firstName, string middleName)   //create custom method
+        {
+            txtInitial.SendKeys(initial);
+            txtFirstName.SendKeys(firstName);
+            txtMiddleName.SendKeys(middleName);
+            btnSave.Click();
+        }
     }
 }

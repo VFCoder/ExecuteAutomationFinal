@@ -24,40 +24,29 @@ namespace ExecuteAutomationFinal
         {
             PropertiesCollection.driver = new ChromeDriver();
 
-            PropertiesCollection.driver.Navigate().GoToUrl("https://demosite.executeautomation.com/index.html");
+            PropertiesCollection.driver.Navigate().GoToUrl("https://demosite.executeautomation.com/Login.html"); //open login page
 
             Console.WriteLine("Opened URL");
         }
         [Test]
         public void ExecuteTest()
         {
-            EAPageObjects page = new EAPageObjects();       //create instance of page objects class with new methods
 
-            page.txtInitial.SendKeys("UserInputText");
+            LoginPageObject1 pageLogin = new LoginPageObject1();        //initialize login object page
+            EAPageObjects pageEA = pageLogin.Login("MyUserName", "MyPassword");   //pass login method and link to EA object page
 
-            page.btnSave.Click();
+            //now create method in EA page objects
 
+            pageEA.FillUserForm("F", "Vince", "Field");
             
 
-
-            /*            //title
-                        SeleniumSetMethods.SelectDropDown("TitleId", "Ms.", PropertyType.Id); 
-                        Console.WriteLine("Title value is: " + SeleniumGetMethods.GetTextFromDropDown("TitleId", PropertyType.Id)); 
-                        //initial
-                        SeleniumSetMethods.EnterText("Initial", "UserText.", PropertyType.Name);
-                        Console.WriteLine("Initial value is: " + SeleniumGetMethods.GetText("Initial", PropertyType.Name)); 
-                        //click
-                        SeleniumSetMethods.Click("Save", PropertyType.Name);
-                        Console.WriteLine("Executed Test");
-            */
-
         }
-        [TearDown]
+       /* [TearDown]
         public void CleanUp()
         {
             PropertiesCollection.driver.Close(); 
 
             Console.WriteLine("Closed browser");
-        }
+        }*/
     }
 }
