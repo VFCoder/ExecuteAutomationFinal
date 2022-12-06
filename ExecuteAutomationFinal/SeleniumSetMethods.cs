@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace ExecuteAutomationFinal
 {
-    class SeleniumSetMethods //change old set methods 
+    public static class SeleniumSetMethods //must be public static class
     {
 
-        public static void EnterText(IWebElement element, string value)
+        public static void EnterText(this IWebElement element, string value) //this = extension method
         {
             element.SendKeys(value);
         }
 
-        public static void Click(IWebElement element)
+        public static void Clicks(this IWebElement element) //change to Click"s" to find the custom method in EAPageObjects
         {
             element.Click();
         }
 
-        public static void SelectDropDown(IWebElement element, string value)
+        public static void SelectDropDown(this IWebElement element, string value) //add "this, now call method directly in EAPageObjects
         {
                 new SelectElement(element).SelectByText(value);
         }

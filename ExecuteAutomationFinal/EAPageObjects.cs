@@ -34,16 +34,20 @@ namespace ExecuteAutomationFinal
 
         public void FillUserForm(string initial, string firstName, string middleName)  
         {
-            SeleniumSetMethods.EnterText(txtInitial, initial);          //create custom methods from set/get
+
+            txtInitial.EnterText(initial);
+            txtInitial.EnterText(firstName);
+            txtMiddleName.EnterText(middleName);
+            btnSave.Clicks();
+
+/*            SeleniumSetMethods.EnterText(txtInitial, initial);          //these can be simplified with extension method from setmethods
             SeleniumSetMethods.EnterText(txtFirstName, firstName);
             SeleniumSetMethods.EnterText(txtMiddleName, middleName);
-            SeleniumSetMethods.Click(btnSave);
+            SeleniumSetMethods.Click(btnSave);*/
 
 
-/*            txtInitial.SendKeys(initial);
-            txtFirstName.SendKeys(firstName);
-            txtMiddleName.SendKeys(middleName);
-            btnSave.Click();*/
+
+
         }
     }
 }

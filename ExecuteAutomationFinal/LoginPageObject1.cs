@@ -27,10 +27,16 @@ namespace ExecuteAutomationFinal
 
         public EAPageObjects Login(string userName, string password) 
         {
-            txtUserName.SendKeys(userName);
+
+            txtUserName.EnterText(userName);        //add extension methods
+            txtPassword.EnterText(password);
+            btnLogin.Submit(); //click or clicks doesn't work
+
+
+/*            txtUserName.SendKeys(userName);   //simplify with extension methods from setmethods
             txtPassword.SendKeys(password);
             btnLogin.Submit();
-
+*/
             return new EAPageObjects();  
         }
     }
