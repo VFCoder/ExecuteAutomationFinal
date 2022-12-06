@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace ExecuteAutomationFinal
 {
-    class EAPageObjects             //create page objects in case values change in code
+    class EAPageObjects           
 
     {
 
-        public EAPageObjects()      //create constructor to initialize objects
+        public EAPageObjects()      
         {
             PageFactory.InitElements(PropertiesCollection.driver, this);
         }
@@ -32,12 +32,18 @@ namespace ExecuteAutomationFinal
         [FindsBy(How = How.Name, Using = "Save")]
         public IWebElement btnSave { get; set; }
 
-        public void FillUserForm(string initial, string firstName, string middleName)   //create custom method
+        public void FillUserForm(string initial, string firstName, string middleName)  
         {
-            txtInitial.SendKeys(initial);
+            SeleniumSetMethods.EnterText(txtInitial, initial);          //create custom methods from set/get
+            SeleniumSetMethods.EnterText(txtFirstName, firstName);
+            SeleniumSetMethods.EnterText(txtMiddleName, middleName);
+            SeleniumSetMethods.Click(btnSave);
+
+
+/*            txtInitial.SendKeys(initial);
             txtFirstName.SendKeys(firstName);
             txtMiddleName.SendKeys(middleName);
-            btnSave.Click();
+            btnSave.Click();*/
         }
     }
 }

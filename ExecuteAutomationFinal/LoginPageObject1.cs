@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace ExecuteAutomationFinal
 {
-    class LoginPageObject1       //create page objects for login page
+    class LoginPageObject1      
     {
 
         public LoginPageObject1()
         {
-            PageFactory.InitElements(PropertiesCollection.driver, this);  //constructor to initialize objects
+            PageFactory.InitElements(PropertiesCollection.driver, this);  
         }
 
         [FindsBy(How = How.Name, Using = "UserName")]
@@ -25,13 +25,13 @@ namespace ExecuteAutomationFinal
         [FindsBy(How = How.Name, Using = "Login")]
         public IWebElement btnLogin { get; set; }
 
-        public EAPageObjects Login(string userName, string password) //create method to use in main class
+        public EAPageObjects Login(string userName, string password) 
         {
             txtUserName.SendKeys(userName);
             txtPassword.SendKeys(password);
             btnLogin.Submit();
 
-            return new EAPageObjects();   //initialize page objects and return instance of EA page from login
+            return new EAPageObjects();  
         }
     }
 }

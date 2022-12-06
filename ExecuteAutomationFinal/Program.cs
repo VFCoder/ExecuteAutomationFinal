@@ -12,6 +12,7 @@ namespace ExecuteAutomationFinal
     //custom methods to set (input) values (text box, drop down menu, check box)
     //custom methods to get values (read values previously input)
     //refactor custom methods (reduce parameters, strongly typed parameters, more reusable)
+    //simplify custom get/set methods
 {
     class Program
     {
@@ -24,7 +25,7 @@ namespace ExecuteAutomationFinal
         {
             PropertiesCollection.driver = new ChromeDriver();
 
-            PropertiesCollection.driver.Navigate().GoToUrl("https://demosite.executeautomation.com/Login.html"); //open login page
+            PropertiesCollection.driver.Navigate().GoToUrl("https://demosite.executeautomation.com/Login.html");
 
             Console.WriteLine("Opened URL");
         }
@@ -32,8 +33,8 @@ namespace ExecuteAutomationFinal
         public void ExecuteTest()
         {
 
-            LoginPageObject1 pageLogin = new LoginPageObject1();        //initialize login object page
-            EAPageObjects pageEA = pageLogin.Login("MyUserName", "MyPassword");   //pass login method and link to EA object page
+            LoginPageObject1 pageLogin = new LoginPageObject1();       
+            EAPageObjects pageEA = pageLogin.Login("MyUserName", "MyPassword");   
 
             //now create method in EA page objects
 
